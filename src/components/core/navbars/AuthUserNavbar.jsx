@@ -3,8 +3,11 @@ import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { axiosHeaders } from '../../../helpers/axiosHeaders';
+import { useSelector, useDispatch } from 'react-redux';
+import { setUser, selectUser } from './../../../store/slices/auth/userSlice';
 
 const AuthUserNavbar = () => {
+	const user = useSelector(selectUser);
 	const location = window.location.host;
 	const navigate = useNavigate();
 	const [submitting, setSubmitting] = useState(false);
@@ -61,8 +64,8 @@ const AuthUserNavbar = () => {
 				className=''
 			></img>
 			<button onClick={handleLogout}>Logout</button>
-			<button onClick={handleSubmit}>Get me</button>
-			{me.name},{me.email}
+			{/* <button onClick={handleSubmit}>Get me</button> */}
+			{user.name},{user.email}
 		</div>
 	);
 };

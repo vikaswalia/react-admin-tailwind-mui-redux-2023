@@ -4,8 +4,12 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 import { axiosHeaders } from '../helpers/axiosHeaders';
 import { Outlet } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { setUser, selectUser } from './../store/slices/auth/userSlice';
 
 const AuthUserLayout = () => {
+	const dispatch = useDispatch();
+	const user = useSelector(selectUser);
 	const [name, setName] = useState('');
 	const data = { name };
 	const handleChange = async () => {
@@ -20,6 +24,12 @@ const AuthUserLayout = () => {
 				headers
 			)
 			.then((res) => {
+				// console.log(
+				// 	'Response from AuthUserNavbar update profile: ',
+				// 	res.data.data.user
+				// );
+				const { email, name, id } = res.data.data.user;
+				dispatch(setUser({ ...user, email, name, id }));
 				// console.log('Response from AuthUserNavbar logout: ', res);
 			})
 			.catch((err) => {

@@ -3,12 +3,15 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
 import { axiosHeaders } from '../../../helpers/axiosHeaders';
+import { useSelector, useDispatch } from 'react-redux';
+import { setUser, selectUser } from './../../../store/slices/auth/userSlice';
 
 const GuestNavbar = () => {
 	const navigate = useNavigate();
 	const [submitting, setSubmitting] = useState(false);
 	// const [error, setError] = useState('');
-
+	const dispatch = useDispatch();
+	const user = useSelector(selectUser);
 	const email = 'admin@domain.com';
 	const password = 'password';
 	const data = { email, password };
@@ -25,6 +28,10 @@ const GuestNavbar = () => {
 				// console.log('response from login function ', res);
 				if (res.data.success) {
 					Cookies.set('token', res.data.data.mbtadmintoken);
+					const { email, name, id } = res.data.data.admin;
+					const roles = res.data.data.roles;
+					const permissions = res.data.data.permissions;
+					dispatch(setUser({ ...user, email, name, id, roles, permissions }));
 					// updateAbility(ability, res.data.data.permissions)
 					// localStorage.setItem('permissions', JSON.stringify(res.data.data.permissions))
 					navigate('/dashboard');
