@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import AuthUserNavbar from '../components/core/navbars/AuthUserNavbar';
+import AuthUserNavbar from '@/components/navbars/AuthUserNavbar';
 import axios from 'axios';
 import Cookies from 'js-cookie';
-import { axiosHeaders } from '../helpers/axiosHeaders';
+import { axiosHeaders } from '@/helpers/axiosHeaders';
 import { Outlet } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { setUser, selectUser } from './../store/slices/auth/userSlice';
+import { setUser, selectUser } from '@/store/slices/auth/userSlice';
 
 const AuthUserLayout = () => {
 	const dispatch = useDispatch();

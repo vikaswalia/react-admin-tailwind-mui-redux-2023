@@ -1,7 +1,7 @@
-import AuthUserLayout from "./layouts/AuthUserLayout";
-import GuestLayout from "./layouts/GuestLayout";
-import Dashboard from "./views/Dashboard";
-import Index from "./views/Index";
+import AuthUserLayout from "@/layouts/AuthUserLayout";
+import GuestLayout from "@/layouts/GuestLayout";
+import Dashboard from "@/pages/Dashboard";
+import Index from "@/pages/Index";
 
 import { Routes, Route, Navigate } from "react-router-dom";
 
