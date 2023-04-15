@@ -25,6 +25,7 @@ const Header = () => {
 				// console.log('Response from AuthUserNavbar logout: ', res);
 				if (res.data.success) {
 					Cookies.remove('token');
+					sessionStorage.removeItem('persist:root');
 					navigate('/');
 
 					//   // Cookies.remove('permissions')

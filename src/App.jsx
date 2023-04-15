@@ -11,7 +11,7 @@ import {
 	toggleNavbar,
 	toggleSemidark,
 } from '@/store/slices/theme/themeConfigSlice';
-import store from '@/store/store';
+import { store } from '@/store/store';
 
 function App() {
 	const dispatch = useDispatch();
