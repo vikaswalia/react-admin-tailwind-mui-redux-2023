@@ -15,7 +15,8 @@
       "@/assets/*": ["./assets/*"],
       "@/data/*": ["./data/*"],
       "@/features/*": ["./features/*"],
-      "@/utils/*": ["./utils/*"]
+      "@/utils/*": ["./utils/*"],
+      "@/router/*": ["./router/*"]
     }
   },
   "exclude": ["node_modules", "build"]

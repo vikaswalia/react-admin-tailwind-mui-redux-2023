@@ -6,10 +6,11 @@ import { axiosHeaders } from '@/helpers/axiosHeaders';
 import { Outlet } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { setUser, selectUser } from '@/store/slices/auth/userSlice';
+import Sidebar from './SideBar';
 
 const AuthUserLayout = () => {
 	const dispatch = useDispatch();
-	const user = useSelector(selectUser);
+	const user = useSelector((state) => selectUser);
 	const [name, setName] = useState('');
 	const data = { name };
 	const handleChange = async () => {
@@ -39,6 +40,7 @@ const AuthUserLayout = () => {
 	return (
 		<>
 			<AuthUserNavbar />
+			{/* <Sidebar /> */}
 			<div>
 				<h1 className='bg-slate-200 p-5'>Auth User Layout</h1>
 				<div className='bg-slate-300 p-5 h-[100vh]'>
