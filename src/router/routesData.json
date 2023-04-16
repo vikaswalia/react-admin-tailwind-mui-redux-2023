@@ -1,0 +1,111 @@
+{
+  "routesList": [
+    {
+      "name": "",
+      "exact": true,
+      "path": "/",
+      "folder":"layouts",
+      "visible_in_menu": true,
+      "menu_title": "Home",
+      "menu_font_awesome_icon": "fa fa-home",
+      "component": "GuestLayout",
+      "child_routes": true,
+      "visible_children_routes_in_menu": true,
+      "children": [
+        {
+          "name": "",
+          "exact": true,
+          "path": "",
+          "folder":"",
+          "visible_in_menu": false,
+          "menu_title": "Index",
+          "menu_font_awesome_icon": "fa fa-home",
+          "component": "Index",
+          "child_routes": false,
+          "visible_children_routes_in_menu": false,
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "",
+      "exact": true,
+      "path": "/",
+      "folder":"layouts",
+      "visible_in_menu": false,
+      "menu_title": "Default",
+      "menu_font_awesome_icon": "fa fa-home",
+      "component": "DefaultLayout",
+      "child_routes": true,
+      "visible_children_routes_in_menu": true,
+      "children": [
+        {
+          "name": "dashboard",
+          "exact": true,
+          "path": "dashboard",
+          "folder":"dashboard",
+          "visible_in_menu": true,
+          "menu_title": "Index",
+          "menu_font_awesome_icon": "fa fa-home",
+          "component": "Dashboard",
+          "child_routes": false,
+          "visible_children_routes_in_menu": false,
+          "children": []
+        },
+        {
+          "name": "users",
+          "exact": true,
+          "path": "users",
+          "folder":"users",
+          "visible_in_menu": true,
+          "menu_title": "Users",
+          "menu_font_awesome_icon": "fa fa-home",
+          "component": "Users",
+          "child_routes": true,
+          "visible_children_routes_in_menu": false,
+          "children": [
+            {
+              "name": "create",
+              "exact": true,
+              "path": "edit",
+              "folder":"users",
+              "visible_in_menu": false,
+              "menu_title": "Create User",
+              "menu_font_awesome_icon": "fa fa-home",
+              "component": "CreateUser",
+              "child_routes": false,
+              "visible_children_routes_in_menu": false,
+              "children": []
+            },
+            {
+              "name": "edit",
+              "exact": true,
+              "path": "edit",
+              "folder":"users",
+              "visible_in_menu": false,
+              "menu_title": "Edit user",
+              "menu_font_awesome_icon": "fa fa-home",
+              "component": "EditUser",
+              "child_routes": false,
+              "visible_children_routes_in_menu": false,
+              "children": []
+            },
+            {
+              "name": "delete",
+              "exact": true,
+              "path": "delete",
+              "folder":"users",
+              "visible_in_menu": false,
+              "menu_title": "Delete user",
+              "menu_font_awesome_icon": "fa fa-home",
+              "component": "DeleteUser",
+              "child_routes": false,
+              "visible_children_routes_in_menu": false,
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

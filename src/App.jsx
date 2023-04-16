@@ -12,10 +12,14 @@ import {
 	toggleSemidark,
 } from '@/store/slices/theme/themeConfigSlice';
 import { store } from '@/store/store';
+import { dynamicRoutes } from '@/router/dynamicRoutes';
+import { Routes, Route, Outlet, Link } from 'react-router-dom';
 
 function App() {
 	const dispatch = useDispatch();
 	const themeConfig = useSelector((state) => state.themeConfig);
+	const rts = dynamicRoutes();
+	// console.log('dynamicRoutes from app.jsx: ', rts);
 	useEffect(() => {
 		dispatch(toggleTheme(localStorage.getItem('theme') || themeConfig.theme));
 		dispatch(toggleMenu(localStorage.getItem('menu') || themeConfig.menu));
@@ -59,7 +63,9 @@ function App() {
 				themeConfig.rtlClass
 			} main-section antialiased relative font-nunito text-sm font-normal`}
 		>
-			<AllRoutes />;
+			{/* <AllRoutes /> */}
+			{/* <DynamicRoutes /> */}
+			<Routes>{rts}</Routes>
 		</div>
 	);
 }
