@@ -6,6 +6,7 @@ module.exports = {
       "@helpers": path.resolve(__dirname, 'src/helpers'),
       "@layouts": path.resolve(__dirname, 'src/components/layouts'),
       "@components": path.resolve(__dirname, 'src/components'),
+      "@modules": path.resolve(__dirname, 'src/components/modules'),
       "@contexts": path.resolve(__dirname, 'src/contexts'),
       "@hooks": path.resolve(__dirname, 'src/hooks'),
       "@store": path.resolve(__dirname, 'src/store'),
@@ -17,6 +18,7 @@ module.exports = {
       "@features": path.resolve(__dirname, 'src/features'),
       "@utils": path.resolve(__dirname, 'src/utils'),
       "@router": path.resolve(__dirname, 'src/router'),
+      "@config": path.resolve(__dirname, 'src/config'),
     },
   },
 };

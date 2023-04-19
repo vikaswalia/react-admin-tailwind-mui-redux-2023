@@ -6,7 +6,7 @@ import Header from './Header';
 import Setting from './Setting';
 import Sidebar from './SideBar';
 import Portals from './Portals';
-import { Outlet } from 'react-router-dom';
+import { Outlet, Link } from 'react-router-dom';
 
 const DefaultLayout = (children, PropsWithChildren) => {
 	const themeConfig = useSelector((state) => state.themeConfig);

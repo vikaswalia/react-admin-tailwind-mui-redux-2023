@@ -2,6 +2,7 @@ import React from 'react';
 import routesData from './routesData.json';
 import { ComponentRegister } from '@router/ComponentRegister';
 import { Routes, Route, Outlet, Link } from 'react-router-dom';
+import ProtectedRoutes from './ProtectedRoutes';
 
 export function dynamicRoutes() {
 	const rts = routesData.routesList;
@@ -11,16 +12,37 @@ export function dynamicRoutes() {
 	const rout = (items) => {
 		const its = items.map((item, index) => {
 			// console.log(item.component);
-			return (
-				<Route
-					key={index}
-					path={item.path}
-					exact={item.exact}
-					element={ComponentRegister[item.component]}
-				>
-					if({item.child_routes} && {item.children !== []}){rout(item.children)}
-				</Route>
-			);
+			if (item.protected) {
+				return (
+					<Route
+						key={index + 'protected'}
+						path=''
+						element={<ProtectedRoutes permission={item.permission} />}
+					>
+						<Route
+							key={index}
+							path={item.path}
+							exact={item.exact}
+							element={ComponentRegister[item.component]}
+						>
+							if({item.child_routes} && {item.children !== []})
+							{rout(item.children)}
+						</Route>
+					</Route>
+				);
+			} else {
+				return (
+					<Route
+						key={index}
+						path={item.path}
+						exact={item.exact}
+						element={ComponentRegister[item.component]}
+					>
+						if({item.child_routes} && {item.children !== []})
+						{rout(item.children)}
+					</Route>
+				);
+			}
 		});
 		return its;
 	};

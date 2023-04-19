@@ -5,6 +5,9 @@ import Dashboard from '@pages/Dashboard';
 import Index from '@pages/Index';
 import React, { lazy } from 'react';
 import Error404 from '@pages/Error404';
+import ProtectedRoutes from '@router/ProtectedRoutes';
+import Users from '@modules/users/Users';
+import CreateUser from '@modules/users/CreateUser';
 // const AuthUserLayout = lazy(() =>
 // 	import('@/components/layouts/AuthUserLayout')
 // );
@@ -18,6 +21,9 @@ export const ComponentRegister = {
 	"DefaultLayout": <DefaultLayout/>,
 	"AuthUserLayout": <AuthUserLayout/>,
 	"Dashboard": <Dashboard/>,
+	"Users": <Users/>,
+	"CreateUser":<CreateUser/>,
 	"Index": <Index/>,
-	"Error404": <Error404/>
+	"Error404": <Error404/>,
+	"ProtectedRoute": <ProtectedRoutes/>
 };

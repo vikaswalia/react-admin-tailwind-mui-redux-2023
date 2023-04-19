@@ -27,11 +27,14 @@ const GuestNavbar = () => {
 			.then((res) => {
 				// console.log('response from login function ', res);
 				if (res.data.success) {
-					Cookies.set('token', res.data.data.mbtadmintoken);
+					const token = res.data.data.mbtadmintoken;
+					Cookies.set('token', token);
 					const { email, name, id } = res.data.data.admin;
 					const roles = res.data.data.roles;
 					const permissions = res.data.data.permissions;
-					dispatch(setUser({ ...user, email, name, id, roles, permissions }));
+					dispatch(
+						setUser({ ...user, email, name, id, roles, permissions, token })
+					);
 					// updateAbility(ability, res.data.data.permissions)
 					// localStorage.setItem('permissions', JSON.stringify(res.data.data.permissions))
 					navigate('/dashboard');
