@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
-import { axiosHeaders } from '@/helpers/axiosHeaders';
+import { axiosHeaders } from '@helpers/axiosHeaders';
 import { useSelector, useDispatch } from 'react-redux';
-import { setUser, selectUser } from '@/store/slices/auth/userSlice';
+import { setUser, selectUser } from '@store/slices/auth/userSlice';
 
 const GuestNavbar = () => {
 	const navigate = useNavigate();

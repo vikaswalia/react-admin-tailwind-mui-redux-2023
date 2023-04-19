@@ -2,7 +2,7 @@ import PerfectScrollbar from 'react-perfect-scrollbar';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useLocation } from 'react-router-dom';
-import { toggleSidebar } from '@/store/slices/theme/themeConfigSlice';
+import { toggleSidebar } from '@store/slices/theme/themeConfigSlice';
 import AnimateHeight from 'react-animate-height';
 import { useState, useEffect } from 'react';
 

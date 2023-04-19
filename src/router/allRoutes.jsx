@@ -1,15 +1,13 @@
 import React from 'react';
-import DefaultLayout from '@/components/layouts/DefaultLayout';
+import DefaultLayout from '@components/layouts/DefaultLayout';
 import { lazy } from 'react';
 import { useRoutes } from 'react-router-dom';
 import { createElement } from 'react';
 
-const AuthUserLayout = lazy(() =>
-	import('@/components/layouts/AuthUserLayout')
-);
-const GuestLayout = lazy(() => import('@/components/layouts/GuestLayout'));
-const Dashboard = lazy(() => import('@/pages/Dashboard'));
-const Index = lazy(() => import('@/pages/Index'));
+const AuthUserLayout = lazy(() => import('@components/layouts/AuthUserLayout'));
+const GuestLayout = lazy(() => import('@components/layouts/GuestLayout'));
+const Dashboard = lazy(() => import('@pages/Dashboard'));
+const Index = lazy(() => import('@pages/Index'));
 
 // const DateRangePicker = lazy(() => import('../pages/Forms/DateRangePicker'));
 // const Clipboard = lazy(() => import('../pages/Forms/Clipboard'));

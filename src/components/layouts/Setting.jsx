@@ -8,7 +8,7 @@ import {
 	toggleRTL,
 	toggleTheme,
 	toggleSemidark,
-} from '@/store/slices/theme/themeConfigSlice';
+} from '@store/slices/theme/themeConfigSlice';
 
 const Setting = () => {
 	const themeConfig = useSelector((state) => state.themeConfig);

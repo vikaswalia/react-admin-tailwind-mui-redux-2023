@@ -4,12 +4,12 @@ import Cookies from 'js-cookie';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
-import { toggleTheme } from '@/store/slices/theme/themeConfigSlice';
+import { toggleTheme } from '@store/slices/theme/themeConfigSlice';
 import { useTranslation } from 'react-i18next';
-import { toggleSidebar } from '@/store/slices/theme/themeConfigSlice';
+import { toggleSidebar } from '@store/slices/theme/themeConfigSlice';
 import i18next from 'i18next';
 import Dropdown from './Dropdown';
-import { setUser, selectUser } from '@/store/slices/auth/userSlice';
+import { setUser, selectUser } from '@store/slices/auth/userSlice';
 
 const Header = () => {
 	const location = useLocation();

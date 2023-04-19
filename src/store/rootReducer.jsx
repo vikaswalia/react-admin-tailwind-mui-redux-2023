@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import userReducer from '@/store/slices/auth/userSlice';
-import themeConfigReducer from '@/store/slices/theme/themeConfigSlice';
+import userReducer from '@store/slices/auth/userSlice';
+import themeConfigReducer from '@store/slices/theme/themeConfigSlice';
 
 const rootReducer = combineReducers({
 	user: userReducer,

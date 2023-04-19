@@ -10,9 +10,9 @@ import {
 	toggleAnimation,
 	toggleNavbar,
 	toggleSemidark,
-} from '@/store/slices/theme/themeConfigSlice';
-import { store } from '@/store/store';
-import { dynamicRoutes } from '@/router/dynamicRoutes';
+} from '@store/slices/theme/themeConfigSlice';
+import { store } from '@store/store';
+import { dynamicRoutes } from '@router/dynamicRoutes';
 import { Routes, Route, Outlet, Link } from 'react-router-dom';
 
 function App() {

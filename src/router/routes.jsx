@@ -1,9 +1,9 @@
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import GuestLayout from '@/components/layouts/GuestLayout';
-import Index from '@/pages/Index';
-import Dashboard from '@/pages/Dashboard';
-import AuthUserLayout from '@/components/layouts/AuthUserLayout';
+import GuestLayout from '@layouts/GuestLayout';
+import Index from '@pages/Index';
+import Dashboard from '@pages/Dashboard';
+import AuthUserLayout from '@layouts/AuthUserLayout';
 
 const routes = [
 	// dashboard

@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import rootReducer, {persistReducersList}from "@/store/rootReducer";
+import rootReducer, {persistReducersList}from "@store/rootReducer";
 import storage from 'redux-persist/lib/storage';
 import storageSession from 'redux-persist/lib/storage/session'
 import { persistReducer, persistStore } from 'redux-persist';

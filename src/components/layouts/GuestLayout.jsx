@@ -1,5 +1,5 @@
 import React from 'react';
-import GuestNavbar from '@/components/navbars/GuestNavbar';
+import GuestNavbar from '@components/navbars/GuestNavbar';
 import { Outlet } from 'react-router-dom';
 
 const GuestLayout = () => {

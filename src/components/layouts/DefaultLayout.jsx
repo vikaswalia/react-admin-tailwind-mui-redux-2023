@@ -1,6 +1,6 @@
 import { PropsWithChildren, Suspense, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleSidebar } from '@/store/slices/theme/themeConfigSlice';
+import { toggleSidebar } from '@store/slices/theme/themeConfigSlice';
 import Footer from './Footer';
 import Header from './Header';
 import Setting from './Setting';

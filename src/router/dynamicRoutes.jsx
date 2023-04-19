@@ -1,6 +1,6 @@
 import React from 'react';
 import routesData from './routesData.json';
-import { ComponentRegister } from '@/router/ComponentRegister';
+import { ComponentRegister } from '@router/ComponentRegister';
 import { Routes, Route, Outlet, Link } from 'react-router-dom';
 
 export function dynamicRoutes() {
