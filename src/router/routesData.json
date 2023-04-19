@@ -106,6 +106,19 @@
           ]
         }
       ]
+    },
+    {
+      "name": "",
+      "exact": false,
+      "path": "*",
+      "folder":"pages",
+      "visible_in_menu": false,
+      "menu_title": "Page ot found",
+      "menu_font_awesome_icon": "fa fa-home",
+      "component": "Error404",
+      "child_routes": false,
+      "visible_children_routes_in_menu": false,
+      "children": []
     }
   ]
 }

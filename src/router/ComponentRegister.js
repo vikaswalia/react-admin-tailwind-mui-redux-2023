@@ -4,6 +4,7 @@ import GuestLayout from '@layouts/GuestLayout';
 import Dashboard from '@pages/Dashboard';
 import Index from '@pages/Index';
 import React, { lazy } from 'react';
+import Error404 from '@pages/Error404';
 // const AuthUserLayout = lazy(() =>
 // 	import('@/components/layouts/AuthUserLayout')
 // );
@@ -18,4 +19,5 @@ export const ComponentRegister = {
 	"AuthUserLayout": <AuthUserLayout/>,
 	"Dashboard": <Dashboard/>,
 	"Index": <Index/>,
+	"Error404": <Error404/>
 };
