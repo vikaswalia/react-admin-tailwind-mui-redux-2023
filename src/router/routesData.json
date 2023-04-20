@@ -19,6 +19,8 @@
           "exact": true,
           "path": "",
           "folder":"",
+          "protected": false,
+          "permission": "",
           "visible_in_menu": false,
           "menu_title": "Index",
           "menu_font_awesome_icon": "fa fa-home",

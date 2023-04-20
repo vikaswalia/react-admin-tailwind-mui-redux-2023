@@ -34,7 +34,7 @@ const AuthUserLayout = () => {
 				// console.log('Response from AuthUserNavbar logout: ', res);
 			})
 			.catch((err) => {
-				console.log(err);
+				console.log('err from AuthUserLayout', err);
 			});
 	};
 	return (

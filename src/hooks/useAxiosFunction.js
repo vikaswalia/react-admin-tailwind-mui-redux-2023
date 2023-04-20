@@ -1,66 +1,53 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
-import Cookies from "js-cookie";
+// import { axiosHeaders } from '@helpers/axiosHeaders';
 
-let headers = {};
-let token = null;
 
-headers = {
-  "Content-Type": "application/json",
-  Accept: "application/json",
-  // "Accept-Charset": "application/json",
-  // withCredentials: true,
-  // "Access-Control-Allow-Origin": "*",
-  // "X-Requested-With": "XMLHttpRequest",
-};
 const useAxiosFunction = () => {
-  const [response, setResponse] = useState([]);
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false); //different!
-  const [controller, setController] = useState();
+    const [response, setResponse] = useState([]);
+    const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false); //different!
+    const [controller, setController] = useState();
 
-  axios.defaults.baseURL = process.env.REACT_APP_API_URL;
-  const axiosFetch = async (configObj) => {
-    if (Cookies.get("token")) {
-      token = Cookies.get("token");
-      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-      // axios.defaults.withCredentials = true;
+    // const headers = axiosHeaders();
+
+    const axiosFetch = async (configObj) => {
+        const {
+            axiosInstance,
+            method,
+            url,
+            data,
+            requestConfig = {}
+        } = configObj;
+
+        try {
+            setLoading(true);
+            const ctrl = new AbortController();
+            setController(ctrl);
+            const res = await axiosInstance[method.toLowerCase()](url,data,{
+                ...requestConfig,
+                signal: ctrl.signal
+            });
+            // console.log('res from axiosFetch function',res.data);
+            setResponse(res.data);
+            return res
+        } catch (err) {
+            console.log('err from useAxiosFunction',err.message);
+            setError(err.message);
+            return err
+        } finally {
+            setLoading(false);
+        }
     }
 
-    
+    useEffect(() => {
+        console.log('controller from Header',controller)
 
-    const { method, url, requestConfig = {} } = configObj;
-    console.log("headers from useAxiosFunction ", headers);
-    console.log("data from useAxiosFunction ", data);
-    try {
-      setLoading(true);
-      const ctrl = new AbortController();
-      setController(ctrl);
-      const res = await axios[method.toLowerCase()](url, 
-        {...requestConfig,
-        headers,}
-      );
-      console.log("response from useAxiosFunction ", res);
+        // useEffect cleanup function
+        return () => controller && controller.abort();
 
-      setResponse(res.data);
-      return res.data;
-    } catch (err) {
-      // console.log("error from useAxiosFunction ", err);
-      // setError(err);
-      return err;
-    } finally {
-      setLoading(false);
-    }
-  };
+    }, [controller]);
 
-  useEffect(() => {
-    // console.log(controller);
+    return [response, error, loading, axiosFetch];
+}
 
-    // useEffect cleanup function
-    return () => controller && controller.abort();
-  }, [controller]);
-
-  return [response, error, loading, axiosFetch];
-};
-
-export default useAxiosFunction;
+export default useAxiosFunction

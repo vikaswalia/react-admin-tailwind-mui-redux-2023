@@ -5,6 +5,8 @@ import axios from 'axios';
 import { axiosHeaders } from '@helpers/axiosHeaders';
 import { useSelector, useDispatch } from 'react-redux';
 import { setUser, selectUser } from '@store/slices/auth/userSlice';
+import useAxiosFunction from '@hooks/useAxiosFunction';
+import axiosInst from '@hooks/axiosInst';
 
 const AuthUserNavbar = () => {
 	const user = useSelector(selectUser);
@@ -12,6 +14,32 @@ const AuthUserNavbar = () => {
 	const navigate = useNavigate();
 	const [submitting, setSubmitting] = useState(false);
 	const [me, setMe] = useState('');
+	const [response, error, loading, axiosFetch] = useAxiosFunction();
+
+	const handleLogoutHook = async () => {
+		const headers = axiosHeaders();
+		// console.log('headers from handleLoginHook', headers);
+		const ftch = await axiosFetch({
+			axiosInstance: axiosInst,
+			method: 'post',
+			url: '/api/admin/logout',
+			requestConfig: {},
+		});
+		if (ftch.data && ftch.data.success) {
+			const responseData = ftch.data;
+			console.log('res from hook', responseData);
+			Cookies.remove('token');
+			navigate('/');
+			// dispatch(
+			// 	setUser({ ...user, email, name, id, roles, permissions, token })
+			// );
+			// updateAbility(ability, responseData.data.permissions);
+			// localStorage.setItem(
+			// 	'permissions',
+			// 	JSON.stringify(responseData.data.permissions)
+			// );
+		}
+	};
 
 	const handleLogout = () => {
 		const headers = axiosHeaders();
@@ -29,7 +57,7 @@ const AuthUserNavbar = () => {
 				}
 			})
 			.catch((err) => {
-				console.log(err);
+				console.log('erros from AuthUserNavbar', err);
 			});
 	};
 
@@ -63,7 +91,7 @@ const AuthUserNavbar = () => {
 				src='/logo192.png'
 				className=''
 			></img>
-			<button onClick={handleLogout}>Logout</button>
+			<button onClick={handleLogoutHook}>Logout</button>
 			{/* <button onClick={handleSubmit}>Get me</button> */}
 			{user.name},{user.email}
 		</div>

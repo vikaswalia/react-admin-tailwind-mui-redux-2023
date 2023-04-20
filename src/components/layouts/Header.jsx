@@ -9,33 +9,60 @@ import { useTranslation } from 'react-i18next';
 import { toggleSidebar } from '@store/slices/theme/themeConfigSlice';
 import i18next from 'i18next';
 import Dropdown from './Dropdown';
-import { setUser, selectUser } from '@store/slices/auth/userSlice';
+import { loggedOutUser, selectUser } from '@store/slices/auth/userSlice';
+import useAxiosFunction from '@hooks/useAxiosFunction';
+import axiosInst from '@hooks/axiosInst';
 
 const Header = () => {
 	const location = useLocation();
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const admin = useSelector(selectUser);
-	const handleLogout = () => {
+	const [response, error, loading, axiosFetch] = useAxiosFunction();
+	const handleLogoutHook = async () => {
 		const headers = axiosHeaders();
-		// console.log('Headers from AuthUserNavbar logout: ', headers);
-		const res = axios
-			.post('/api/admin/logout', headers)
-			.then((res) => {
-				// console.log('Response from AuthUserNavbar logout: ', res);
-				if (res.data.success) {
-					Cookies.remove('token');
-					sessionStorage.removeItem('persist:root');
-					navigate('/');
+		// console.log('headers from handleLoginHook', headers);
+		const ftch = await axiosFetch({
+			axiosInstance: axiosInst,
+			method: 'post',
+			url: '/api/admin/logout',
+			requestConfig: { headers },
+		});
+		if (ftch.data && ftch.data.success) {
+			const responseData = ftch.data;
+			console.log('res from hook', responseData);
+			Cookies.remove('token');
+			dispatch(loggedOutUser());
+			// navigate('/');
 
-					//   // Cookies.remove('permissions')
-					//   // Cookies.remove('user')
-				}
-			})
-			.catch((err) => {
-				console.log(err);
-			});
+			// updateAbility(ability, responseData.data.permissions);
+			// localStorage.setItem(
+			// 	'permissions',
+			// 	JSON.stringify(responseData.data.permissions)
+			// );
+		}
 	};
+
+	// const handleLogout = () => {
+	// 	const headers = axiosHeaders();
+	// 	// console.log('Headers from AuthUserNavbar logout: ', headers);
+	// 	const res = axios
+	// 		.post('/api/admin/logout', headers)
+	// 		.then((res) => {
+	// 			// console.log('Response from AuthUserNavbar logout: ', res);
+	// 			if (res.data.success) {
+	// 				Cookies.remove('token');
+	// 				sessionStorage.removeItem('persist:root');
+	// 				navigate('/');
+
+	// 				//   // Cookies.remove('permissions')
+	// 				//   // Cookies.remove('user')
+	// 			}
+	// 		})
+	// 		.catch((err) => {
+	// 			console.log('err from Header', err);
+	// 		});
+	// };
 	useEffect(() => {
 		const selector = document.querySelector(
 			'ul.horizontal-menu a[href="' + window.location.pathname + '"]'
@@ -1085,7 +1112,7 @@ const Header = () => {
 									</li>
 									<li className='border-t border-white-light dark:border-white-light/10'>
 										<button
-											onClick={handleLogout}
+											onClick={handleLogoutHook}
 											className='text-danger !py-3'
 										>
 											<svg
