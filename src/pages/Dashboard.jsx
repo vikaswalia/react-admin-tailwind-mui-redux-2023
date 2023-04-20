@@ -1,5 +1,6 @@
 import React from 'react';
 import { Outlet, Link } from 'react-router-dom';
+import CheckAbilities from '@components/core/CheckAbilities';
 
 const Dashboard = () => {
 	return (
@@ -12,6 +13,7 @@ const Dashboard = () => {
 			<br />
 			<Link to='/dashboard/users/create'>Create Users</Link>
 			<Outlet />
+			<CheckAbilities />
 		</div>
 	);
 };

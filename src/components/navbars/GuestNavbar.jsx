@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setUser, selectUser } from '@store/slices/auth/userSlice';
 import useAxiosFunction from '@hooks/useAxiosFunction';
 import axiosInst from '@hooks/axiosInst';
+import useUpdateAbility from '@hooks/useUpdateAbility';
 
 const GuestNavbar = () => {
 	const navigate = useNavigate();
@@ -18,6 +19,7 @@ const GuestNavbar = () => {
 	const password = 'password';
 	const data = { email, password };
 	const [response, error, loading, axiosFetch] = useAxiosFunction();
+	const [updateAbility] = useUpdateAbility();
 
 	const handleLoginHook = async () => {
 		// setSubmitting(true);
@@ -43,7 +45,7 @@ const GuestNavbar = () => {
 			dispatch(
 				setUser({ ...user, email, name, id, roles, permissions, token })
 			);
-			// updateAbility(ability, responseData.data.permissions);
+			updateAbility(responseData.data.permissions);
 			// localStorage.setItem(
 			// 	'permissions',
 			// 	JSON.stringify(responseData.data.permissions)

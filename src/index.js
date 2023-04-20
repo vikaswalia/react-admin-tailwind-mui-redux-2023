@@ -7,6 +7,9 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 
+import { AbilityContext } from '@config/Can'
+import ability from '@config/ability'
+
 import { BrowserRouter, RouterProvider } from 'react-router-dom';
 import { PersistGate } from 'redux-persist/integration/react';
 // Perfect Scrollbar
@@ -21,6 +24,7 @@ import './i18n';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 	<React.StrictMode>
+		 <AbilityContext.Provider value={ability}>
 		<Suspense>
 			<BrowserRouter>
 				<Provider store={store}>
@@ -33,6 +37,7 @@ root.render(
 				</Provider>
 			</BrowserRouter>
 		</Suspense>
+		</AbilityContext.Provider>
 	</React.StrictMode>
 );
 
