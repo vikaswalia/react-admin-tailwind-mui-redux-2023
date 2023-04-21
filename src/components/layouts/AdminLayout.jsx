@@ -10,7 +10,7 @@ import Portals from './Portals';
 import { Outlet, Link } from 'react-router-dom';
 import useUpdateAbility from '@hooks/useUpdateAbility';
 
-const DefaultLayout = (children, PropsWithChildren) => {
+const AdminLayout = (children, PropsWithChildren) => {
 	const themeConfig = useSelector((state) => state.themeConfig);
 	const dispatch = useDispatch();
 	const user = useSelector(selectUser);
@@ -162,4 +162,4 @@ const DefaultLayout = (children, PropsWithChildren) => {
 	);
 };
 
-export default DefaultLayout;
+export default AdminLayout;

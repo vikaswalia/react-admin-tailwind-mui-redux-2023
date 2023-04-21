@@ -14,12 +14,15 @@ import {
 import { store } from '@store/store';
 import { dynamicRoutes } from '@router/dynamicRoutes';
 import { Routes, Route, Outlet, Link } from 'react-router-dom';
+import GuestLayout from '@layouts/GuestLayout';
+import Index from '@pages/Index';
+import Error404 from '@pages/Error404';
 
 function App() {
 	const dispatch = useDispatch();
 	const themeConfig = useSelector((state) => state.themeConfig);
 	const rts = dynamicRoutes();
-	// console.log('dynamicRoutes from app.jsx: ', rts);
+	console.log('dynamicRoutes from app.jsx: ', rts);
 	useEffect(() => {
 		dispatch(toggleTheme(localStorage.getItem('theme') || themeConfig.theme));
 		dispatch(toggleMenu(localStorage.getItem('menu') || themeConfig.menu));
@@ -65,7 +68,22 @@ function App() {
 		>
 			{/* <AllRoutes /> */}
 			{/* <DynamicRoutes /> */}
-			<Routes>{rts}</Routes>
+			<Routes>
+				<Route
+					path='/'
+					element={<GuestLayout />}
+				>
+					<Route
+						path=''
+						element={<Index />}
+					/>
+				</Route>
+				{rts}
+				<Route
+					path='*'
+					element={<Error404 />}
+				></Route>
+			</Routes>
 		</div>
 	);
 }

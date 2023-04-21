@@ -7,6 +7,7 @@ const CheckAbilities = () => {
 		<div className='mt-2'>
 			<h1 className='text-red-500 text-2xl'>Abilities Check</h1>
 			<Can I='teachers-access'>You have access to Teachers</Can>
+			<Can I='teachers-access'>You have access to Teachers</Can>
 			{!ability.can('teachers-access') && <p>You cannot access teacher</p>}
 			{ability.can('teachers-create') && <p>Can create teacher</p>}
 			{!ability.can('teachers-create') && <p>You cannot create teacher</p>}

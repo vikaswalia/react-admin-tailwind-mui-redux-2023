@@ -45,12 +45,12 @@ const GuestNavbar = () => {
 			dispatch(
 				setUser({ ...user, email, name, id, roles, permissions, token })
 			);
-			updateAbility(responseData.data.permissions);
+			// updateAbility(responseData.data.permissions);
 			// localStorage.setItem(
 			// 	'permissions',
 			// 	JSON.stringify(responseData.data.permissions)
 			// );
-			navigate('/dashboard');
+			navigate('/admin/dashboard');
 		}
 	};
 
