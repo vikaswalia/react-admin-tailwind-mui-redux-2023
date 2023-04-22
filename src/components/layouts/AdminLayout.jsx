@@ -9,6 +9,7 @@ import Sidebar from './SideBar';
 import Portals from './Portals';
 import { Outlet, Link } from 'react-router-dom';
 import useUpdateAbility from '@hooks/useUpdateAbility';
+import SideBarNew from './SideBarNew';
 
 const AdminLayout = (children, PropsWithChildren) => {
 	const themeConfig = useSelector((state) => state.themeConfig);
@@ -34,7 +35,7 @@ const AdminLayout = (children, PropsWithChildren) => {
 			setShowTopButton(false);
 		}
 	};
-	updateAbility(user.permissions);
+	updateAbility(user);
 	// useEffect(() => {
 	// 	console.log(
 	// 		'userpermissions from useEffect in DefaultLayout ',
@@ -136,7 +137,7 @@ const AdminLayout = (children, PropsWithChildren) => {
 					className={`${themeConfig.navbar} main-container text-black dark:text-white-dark min-h-screen`}
 				>
 					{/* BEGIN SIDEBAR */}
-					<Sidebar />
+					<SideBarNew />
 					{/* END SIDEBAR */}
 
 					{/* BEGIN CONTENT AREA */}

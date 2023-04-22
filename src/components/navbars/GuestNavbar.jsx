@@ -15,7 +15,7 @@ const GuestNavbar = () => {
 	// const [error, setError] = useState('');
 	const dispatch = useDispatch();
 	const user = useSelector(selectUser);
-	const email = 'admin@domain.com';
+	const email = 'superadmin@domain.com';
 	const password = 'password';
 	const data = { email, password };
 	const [response, error, loading, axiosFetch] = useAxiosFunction();

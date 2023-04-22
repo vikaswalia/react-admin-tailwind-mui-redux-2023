@@ -6,9 +6,13 @@ import ProtectedRoutes from './ProtectedRoutes';
 import useAxiosFunction from '@hooks/useAxiosFunction';
 import axiosInst from '@hooks/axiosInst';
 import { axiosHeaders } from '@helpers/axiosHeaders';
+import { setSite, selectSite } from '@store/slices/site/siteSlice';
+import { useSelector, useDispatch } from 'react-redux';
 
 export function dynamicRoutes() {
 	const [rts, setRts] = useState('');
+	const dispatch = useDispatch();
+	const site = useSelector(selectSite);
 	// rts = routesData.routesList;
 	const [response, error, loading, axiosFetch] = useAxiosFunction();
 	const headers = axiosHeaders();
@@ -21,6 +25,8 @@ export function dynamicRoutes() {
 			requestConfig: {},
 		});
 		if (ftch.data && ftch.data.success) {
+			const routes = ftch.data.data.routesList;
+			dispatch(setSite({ ...site, routes }));
 			setRts(ftch.data.data.routesList);
 			console.log('rts from dynamicRoutes getRouteList function', rts);
 		}
